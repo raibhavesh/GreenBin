@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clean Care Hub</title>
+    <link rel="stylesheet" href="{% static 'css/landing.css' %}" />
+    <link rel="icon" href="{% static 'assets/favicon.ico' %}" />
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="navleft"><p>Clean Care Hub</p></div>
+      <div class="navright">
+        {% if request.user.is_authenticated %}
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="userDropdown"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            {{ request.user.email }}
+          </a>
+        </li>
+        <a href="../logout/"><button class="submitbutton">Logout</button></a>        
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="container-1">
+      <div class="header">
+        <h2>Dashboard</h2>
+      </div>
+    </div>
+
+    <a href="../leaderboard"><button class="btn">Leaderboard</button></a>
+
+    <div class="cards">
+
+      <!-- Task List Card -->
+      <div class="header model-card">
+        <div class="container">
+          <h2>Task List</h2>
+          <img src="{% static 'assets/tracklist.jpg' %}" class="model-img" alt="photo">
+          {% if user.is_superuser %}
+          <a href="../tracklist/"><button class="btn">Task List</button></a>    
+          {% else %}
+          <a href="../assigned_tasks/"><button class="btn">Task List</button></a>    
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- Check Sanitation Card -->
+      <div class="header model-card">
+        <div class="container">
+          <h2>Check Sanitation</h2>
+          <img src="{% static 'assets/sanitation.jpg' %}" class="model-img" alt="photo">
+          <a href="../litter/"><button class="btn">Check Sanitation</button></a>    
+        </div>
+      </div>
+
+      <!-- Live Feed Card -->
+      <div class="header model-card">
+        <div class="container">
+          <h2>Live Sanitation Feed</h2>
+          <img src="{% static 'assets/livefeed.jpeg' %}" class="model-img" alt="photo">
+          <a href="../live_feed/"><button class="btn">Check Live</button></a>    
+        </div>
+      </div>
+
+      <!-- Smart Waste Classifier Card -->
+      <div class="header model-card">
+        <div class="container">
+          <h2>Smart Waste Classifier</h2>
+          <img src="{% static 'assets/waste_classifier.jpg' %}" class="model-img" alt="photo">
+          <a href="{% url 'predict_waste' %}"><button class="btn">Classify Waste</button></a>    
+        </div>
+      </div>
+
+    </div>
+
+    {% block content %}
+    {% endblock content %}
+  </body>
+</html>

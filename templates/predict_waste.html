@@ -1,0 +1,37 @@
+def predict_waste(request):
+    if request.method == "POST" and request.FILES.get("image"):
+        image = request.FILES["image"]
+        fss = FileSystemStorage()
+        filename = fss.save(image.name, image)
+        uploaded_image_url = fss.url(filename)
+
+        try:
+            image_path = os.path.join(settings.MEDIA_ROOT, filename)
+
+            # Preprocess the image
+            img = keras_image.load_img(image_path, target_size=(224, 224))
+            img_array = keras_image.img_to_array(img)
+            img_array = np.expand_dims(img_array, axis=0)
+            img_array /= 255.0
+
+            # Predict
+            predictions = waste_model.predict(img_array)[0]
+            predicted_index = np.argmax(predictions)
+            predicted_class = index_to_class[predicted_index]
+            confidence = round(predictions[predicted_index] * 100, 2)
+
+            result_text = f"\U0001F5D1️ Predicted Waste Category: {predicted_class} with {confidence}% confidence\n\nClass Labels: {class_labels}"
+
+            return render(
+                request,
+                "waste_classifier.html",
+                {
+                    "image_url": uploaded_image_url,
+                    "prediction": result_text,
+                },
+            )
+
+        except Exception as e:
+            return render(request, "waste_classifier.html", {"message": str(e)})
+
+    return render(request, "waste_classifier.html")

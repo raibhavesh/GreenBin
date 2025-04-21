@@ -1,0 +1,135 @@
+/* General Reset */
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+  }
+  
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+  
+  /* Card Styling */
+  .card {
+    background-color: #1e1e1e;
+    border-radius: 16px;
+    padding: 30px 25px;
+    box-shadow: 0 5px 20px rgba(122, 141, 144, 0.15);
+    margin-bottom: 30px;
+    transition: 0.3s ease;
+  }
+  
+  /* Header */
+  .header h1 {
+    font-size: 2.8rem;
+    font-weight: bold;
+    margin: 0;
+  }
+  .header h1 span {
+    color: #7a8d90;
+  }
+  .header p {
+    font-size: 1.1rem;
+    color: #ccc;
+    margin-top: 10px;
+  }
+  
+  /* Upload Form */
+  .custom-file-upload {
+    background-color: transparent;
+    border: 2px dashed #7a8d90;
+    color: #ccc;
+    padding: 12px 25px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+    margin-right: 15px;
+  }
+  .custom-file-upload:hover {
+    background-color: #7a8d90;
+    color: #000;
+  }
+  
+  .classify-btn {
+    background-color: #7a8d90;
+    color: #000;
+    border: none;
+    padding: 12px 25px;
+    font-weight: bold;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .classify-btn:hover {
+    background-color: #6a7c7f;
+    transform: scale(1.05);
+  }
+  
+  /* Uploaded Image */
+  .wrapper {
+    text-align: center;
+  }
+  .wrapperimg {
+    max-width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(122, 141, 144, 0.2);
+    border: 3px solid #7a8d90;
+  }
+  
+  /* Prediction Box */
+  .prediction-box {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 1.3rem;
+    padding: 20px;
+    background: rgba(122, 141, 144, 0.1);
+    border-left: 6px solid #7a8d90;
+    border-radius: 12px;
+  }
+  .prediction-box span {
+    color: #7a8d90;
+    font-weight: 600;
+  }
+  
+  /* Dustbin Icon SVG */
+  .dustbin-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .colored-dustbin {
+    width: 120px;
+    height: 120px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    cursor: pointer;
+  }
+  .dustbin-container:hover .colored-dustbin {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 20px var(--bin-color));
+  }
+  
+  /* Status Message */
+  .status {
+    text-align: center;
+    color: #ffd54f;
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
+  
+  /* Class Labels */
+  pre {
+    background-color: #2a2a2a;
+    padding: 15px;
+    border-radius: 10px;
+    overflow-x: auto;
+    font-size: 0.9rem;
+    color: #eee;
+  }
+  
